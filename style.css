@@ -26,8 +26,12 @@ canvas {
     }
 }
 
+.photu {
+    max-width: 400px;
+}
+
 .footer {
-    margin-top: 1850px;
+    margin-top: 9400px;
     padding: 0 100px;
     text-align: center;
     font-size: 1.15em;
@@ -186,8 +190,8 @@ h1 {
     position: relative;
     height: 100%;
     margin: 0 auto;
-    max-width: 750px;
-    padding: 25px;
+    max-width: 1000px;
+    /* padding: 25px; */
     display: grid;
     grid-template-columns: 1fr 3px 1fr;
     font-family: "Fira Sans", sans-serif;
