@@ -13,6 +13,7 @@
     --db-color: #8fdcd5;
     --prog-color: #f3b088;
     --traits-color: #e295b2;
+    --emphasis-color: rgba(249, 249, 95, 0.868);
 
     /* Font size variables */
     --font-size-large: 2rem;
@@ -193,8 +194,9 @@ section {
 }
 
 .link {
-    color: var(--nlp-color);
+    color: var(--dl-color);
 }
+
 
 /* Header */
 header {
@@ -203,12 +205,16 @@ header {
     position: relative;
 }
 
+.contact-info {
+    margin: auto;
+}
+
 /* Icons Styling */
 .contact-info i {
     font-size: 25px;
     color: var(--text-color);
     /* Default text color */
-    margin-right: 15px;
+    margin: 0 7px;
     transition: color 0.3s ease;
     /* Smooth transition when toggling */
 }
@@ -261,7 +267,7 @@ footer {
 .timeline-icon {
     position: absolute;
     left: -26px;
-    top: 22px;
+    top: 18px;
     width: 15px;
     height: 15px;
     background: var(--text-color);
