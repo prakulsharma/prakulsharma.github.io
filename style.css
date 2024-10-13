@@ -295,7 +295,7 @@ footer {
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 0.9rem;
-    color: #fff;
+    color: var(--background-color);
     display: inline-block;
 }
 
