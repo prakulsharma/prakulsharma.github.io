@@ -29,23 +29,6 @@
     --font-size-smaller-responsive: 0.8rem;
 }
 
-.profile-photo {
-    display: block;
-    margin: 0 auto;
-    /* Center the image */
-    width: 150px;
-    /* Set the size of the photo */
-    height: 150px;
-    border-radius: 50%;
-    /* Make the image circular */
-    object-fit: cover;
-    /* Ensure the image covers the entire circle */
-    border: 3px solid var(--text-color);
-    /* Optional: Add a border to the photo */
-    margin-bottom: 20px;
-    /* Space between the photo and your name */
-}
-
 
 /* Dark mode variables */
 body.dark-mode {
@@ -81,6 +64,7 @@ body {
     background-repeat: no-repeat;
     margin: 0 auto;
     margin-bottom: 20px;
+    border: 3px solid var(--text-color);
 }
 
 .container {
@@ -98,6 +82,12 @@ body {
     /* Set thickness to 2px */
 }
 
+.feedback-box {
+    margin-top: 20px;
+    font-size: var(--font-size-smaller);
+    white-space: normal;
+    overflow-wrap: break-word;
+}
 
 .projects-header {
     display: flex;
@@ -167,6 +157,90 @@ heading4 {
     margin-bottom: 5px;
 }
 
+/* #prakulai .container {
+    text-align: center;
+} */
+
+.search-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.search-input {
+    width: 60%;
+    max-width: 500px;
+    padding: 15px;
+    border: 1px solid var(--text-color);
+    border-radius: 25px;
+    font-size: var(--font-size-smaller);
+    outline: none;
+    font-family: 'Latin Modern Roman', serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    transition: background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+.search-input::placeholder {
+    color: var(--text-color);
+}
+
+/* .search-input:focus {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+    border-color: #007bff;
+} */
+
+.search-button {
+    padding: 15px 20px;
+    border: 1px solid var(--text-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: var(--font-size-smaller);
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'Latin Modern Roman', serif;
+    /* Ensure uniform font family */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* .search-button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+} */
+
+.response-box {
+    margin-top: 20px;
+    font-size: var(--font-size-xs);
+    font-family: 'Latin Modern Roman', serif;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: normal;
+}
+
+.response-box.loading {
+    font-style: italic;
+    color: var(--subtle-text-color);
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .search-input {
+    background-color: var(--header-footer-bg-color);
+    color: var(--header-footer-text-color);
+}
+
+body.dark-mode .search-button {
+    background-color: var(--header-footer-bg-color);
+    color: var(--header-footer-text-color);
+}
+
+body.dark-mode .response-box {
+    color: var(--header-footer-text-color);
+}
 
 .company-date {
     display: flex;
