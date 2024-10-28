@@ -37,6 +37,118 @@
     </header>
 
     <main>
+        <script>
+            let loadingInterval;  // Declare a variable to store the interval
+
+            // Function to show loading animation
+            function showLoading() {
+                const responseDiv = document.getElementById('response');
+                let dotCount = 1;
+
+                // Clear any previous interval (if any)
+                clearInterval(loadingInterval);
+
+                // Set a new interval to update the loading message
+                loadingInterval = setInterval(() => {
+                    let dots = '.'.repeat(dotCount);  // Create dots based on the current count
+                    responseDiv.innerText = `Generating response using RAG${dots}`;
+                    dotCount = dotCount < 3 ? dotCount + 1 : 1;  // Cycle between 1 to 3 dots
+                }, 500);
+            }
+
+            // Function to hide the loading animation
+            function hideLoading() {
+                clearInterval(loadingInterval);  // Stop the interval
+            }
+
+            // Function to simulate typing effect
+            function typeText(element, text, delay = 30) {
+                let index = 0;
+                element.innerHTML = ""; // Clear the current text
+                const feedbackDiv = document.getElementById('feedback');
+
+                const typingInterval = setInterval(() => {
+                    if (index < text.length) {
+                        // Append the next character, including spaces
+                        element.innerHTML += text[index] === " " ? "&nbsp;" : text[index];
+                        index++;
+                    } else {
+                        clearInterval(typingInterval);
+                        feedbackDiv.style.display = 'block';
+                    }
+                }, delay);
+            }
+
+            async function sendQuestion() {
+                const question = document.getElementById('question').value.trim();
+                const responseDiv = document.getElementById('response');
+                const feedbackDiv = document.getElementById('feedback');
+
+                feedbackDiv.style.display = 'none';
+
+                // Check if the question is empty
+                if (question.length === 0) {
+                    typeText(responseDiv, "Please don't ask me an empty question.");
+                    return;
+                }
+
+                // Check if the question is too long
+                if (question.length > 100) {
+                    typeText(responseDiv, "Your question is too long! Please limit it to 100 characters.");
+                    return;
+                }
+
+                // Show loading animation
+                showLoading();
+
+                try {
+                    const response = await fetch('https://rag-portfolio-api.onrender.com/query/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ question: question })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Error: ${response.statusText}`);
+                    }
+
+                    const data = await response.json();
+
+                    // Hide the loading animation and show the response with typing effect
+                    hideLoading();
+                    if (data.answer) {
+                        typeText(responseDiv, data.answer);
+                    } else {
+                        typeText(responseDiv, "No answer found in response.");
+                    }
+                } catch (error) {
+                    hideLoading();
+                    typeText(responseDiv, `There seems to be an error: ${error.message}. \nSometimes the server is off and requires about 50s to restart. Try again in some time!`);
+                }
+            }
+        </script>
+
+
+        <section id="prakulai">
+            <div class="container">
+                <div class="search-box">
+                    <input type="text" id="question" placeholder="I am PrakulAI, ask me anything!" class="search-input">
+                    <button onclick="sendQuestion()" class="search-button">Go</button>
+                </div>
+                <div id="response" class="response-box"></div>
+                <div id="feedback" class="feedback-box" style="display: none;">
+                    Did you like this RAG implementation? Check out the repo
+                    <a href="https://github.com/prakulsharma/rag-portfolio-api" target="_blank">
+                        <i class="fas fa-link link"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
+
         <!-- Profile Section -->
         <section id="profile">
             <div class="container">
