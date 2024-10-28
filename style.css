@@ -219,7 +219,7 @@ heading4 {
     transition: color 0.3s ease;
     white-space: normal;
     overflow-wrap: break-word;
-    word-break: normal;
+    word-break: auto-phrase;
 }
 
 .response-box.loading {
