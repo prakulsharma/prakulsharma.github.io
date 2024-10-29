@@ -51,7 +51,7 @@
                 // Set a new interval to update the loading message
                 loadingInterval = setInterval(() => {
                     let dots = '.'.repeat(dotCount);  // Create dots based on the current count
-                    responseDiv.innerText = `Generating response using RAG${dots}`;
+                    responseDiv.innerText = `Sometimes the server can take up to 5 mins to boot up the first time. Generating response using RAG${dots}`;
                     dotCount = dotCount < 3 ? dotCount + 1 : 1;  // Cycle between 1 to 3 dots
                 }, 500);
             }
